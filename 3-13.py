@@ -14,7 +14,9 @@ def advance(state, position, forward=True):
     return tuple(mutable)
 
 
-def neighbors(state):
+def neighbors(state, deadends):
+    if state in deadends:
+        return
     for forward in (True, False):
         for position in range(4):
             yield advance(state, position, forward)
@@ -32,11 +34,9 @@ def solve(deadends, target):
     while frontier:
         new = []
         for state in frontier:
-            if state in deadends:
-                continue
             if state == target:
                 return level
-            for neighbor in neighbors(state):
+            for neighbor in neighbors(state, deadends):
                 if neighbor not in visited:
                     visited.add(neighbor)
                     new.append(neighbor)
