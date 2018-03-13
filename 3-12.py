@@ -1,11 +1,3 @@
-# Definition for a binary tree node.
-class TreeNode(object):
-    def __init__(self, x):
-        self.val = x
-        self.left = None
-        self.right = None
-
-
 def nums(node, prefix=0):
     if node is None:
         return
