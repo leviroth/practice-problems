@@ -1,17 +1,17 @@
-def advance(state, position, forward=True):
-    change = 1 if forward else -1
-    new_val = (state[position] + change) % 10
-    mutable = list(state)
-    mutable[position] = new_val
-    return tuple(mutable)
-
-
 def to_tuple(s):
     return tuple(int(c) for c in s)
 
 
 def make_set(l):
     return {to_tuple(s) for s in l}
+
+
+def advance(state, position, forward=True):
+    change = 1 if forward else -1
+    new_val = (state[position] + change) % 10
+    mutable = list(state)
+    mutable[position] = new_val
+    return tuple(mutable)
 
 
 def neighbors(state):
